@@ -15,10 +15,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   Visitor.init({
     name: DataTypes.STRING,
+    relationship : DataTypes.STRING,
+    homeAddress : DataTypes.STRING,
     checkIn: DataTypes.DATE,
     checkOut:DataTypes.DATE,
-    longStay :DataTypes.STRING,
-    homeId: DataTypes.INTEGER
+    longStay :DataTypes.INTEGER,
+    homeId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Visitor',

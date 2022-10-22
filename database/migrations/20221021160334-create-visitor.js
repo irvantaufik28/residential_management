@@ -11,6 +11,12 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      relationship : {
+        type: Sequelize.STRING
+      },
+      homeAddress : {
+        type: Sequelize.STRING
+      },
       checkIn: {
         type: Sequelize.DATE
       },
