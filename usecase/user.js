@@ -114,33 +114,6 @@ class User {
       return result
     }
   
-    async updateUserImage(userData, id) {
-      let result = {
-        isSuccess: false,
-        reason: null,
-        statusCode: 404,
-        data: null,
-      };
-  
-      let userBody = userData;
-  
-      let user = await this.UserRepository.getUserByID(id);
-  
-      if (user === null) {
-        result.reason = "user not found";
-        return result;
-      }
-  
-      userBody.image = await this.cloudinary.uploadCloudinaryAvatar(
-        userBody.image
-      );
-  
-      await this.UserRepository.updateUser(userBody, id);
-  
-      result.isSuccess = true;
-      result.statusCode = 200;
-      return result;
-    }
   }
   
 

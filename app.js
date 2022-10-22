@@ -56,7 +56,8 @@ const otpUC = new OtpUseCase(
 
 const homeUC = new HomeUseCase(
   new HomeRepository(),
-  new UserRepository()
+  new UserRepository(),
+  _
 )
 
 app.use((req, res, next) => {

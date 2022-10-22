@@ -1,7 +1,8 @@
 class Home {
-  constructor(HomeRepository, UserRepository) {
+  constructor(HomeRepository, UserRepository, _) {
     this.HomeRepository = HomeRepository;
     this.UserRepository = UserRepository;
+    this._ = _;
   }
 
   async getHomeById(id) {
@@ -32,7 +33,7 @@ class Home {
     return result;
   }
 
-  async getAllHome(filters) {
+  async getAllHome() {
     let result = {
       isSuccess: false,
       status: 404,
@@ -40,7 +41,7 @@ class Home {
       data: [],
     };
 
-    const home = await this.HomeRepository.getAllhome(filters);
+    const home = await this.HomeRepository.getAllHome();
     result.isSuccess = true;
     result.status = 200;
     result.data = home;
@@ -71,7 +72,7 @@ class Home {
       reason: null,
       data: null,
     };
-    const home = await this.HomeRepository.creatHome(homeData);
+    const home = await this.HomeRepository.createHome(homeData);
     if (home === null) {
       result.reason = "failed create Home";
       return result;
@@ -102,7 +103,7 @@ class Home {
     return result;
   }
   
-  async updateHomeByUser(homeData, id) {
+  async updateHomeByMember(homeData, id) {
     let result = {
       isSuccess: false,
       status: 404,

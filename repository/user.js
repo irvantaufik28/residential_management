@@ -36,6 +36,7 @@ class UserRepository {
   async getUserByHomeId(homeId) {
     return await this.UserModel.findOne({
       where: { homeId },
+      attributes: { exclude: ["password"] },
     });
   }
   async updateUser(user, id) {

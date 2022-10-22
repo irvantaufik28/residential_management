@@ -2,7 +2,7 @@ const resData = require("../helper/response");
 module.exports = {
   gethomeById: async (req, res, next) => {
     try {
-      let { id } = params.id;
+      let { id }  = req.params
       const home = await req.homeUC.getHomeById(id);
       if (!home.isSuccess) {
         return res
@@ -14,9 +14,9 @@ module.exports = {
       next(e);
     }
   },
-  getAllhome: async (req, res, next) => {
+  getAllHome: async (req, res, next) => {
     try {
-      let home = await req.homeUC.getAllhome();
+      let home = await req.homeUC.getAllHome();
       return res.json(resData.success(home.data));
     } catch (e) {
       next(e);
@@ -25,7 +25,7 @@ module.exports = {
 
   gethomeByUserId: async (req, res, next) => {
     try {
-      let { id } = params.id;
+      let { id } = req.params;
       const home = await req.homeUC.getHomeByUserId(id);
       if (!home.isSuccess) {
         return res
@@ -40,17 +40,14 @@ module.exports = {
 
   createHome: async (req, res, next) => {
     try {
-      let homeData = {
-        home_number: req.body.home_number,
-        isActive: true,
-      };
+      let homeData = req.body
       const home = await req.homeUC.createHome(homeData);
       if (!home.isSuccess) {
         return res
           .status(home.status)
           .json(resData.failed(home.reason, home.data));
       }
-      return res.status(home.status).json(resData.success(addhome.data));
+      return res.status(home.status).json(resData.success(home.data));
     } catch (e) {
       next(e);
     }
@@ -76,7 +73,7 @@ module.exports = {
 
   updateHomeByMember: async (req, res, next) => {
     try {
-      let { id } = req.user.id;
+      let { id } = req.user
       let home = {
         isAtHome: req.body.isAtHome,
       };

@@ -9,8 +9,8 @@ class HomeRepository {
       where: { userId },
     });
   }
-  async getAllHome(filters) {
-    return await this.HomeModel.findAll(filters);
+  async getAllHome() {
+    return await this.HomeModel.findAll();
   }
   async getHomeById(id) {
     return await this.HomeModel.findOne({
@@ -18,7 +18,7 @@ class HomeRepository {
     });
   }
   async createHome(homeData) {
-    return await this.HomeModel.createHome(homeData);
+    return await this.HomeModel.create(homeData);
   }
   async updateHome(data, id) {
     return await this.HomeModel.update(data, {
