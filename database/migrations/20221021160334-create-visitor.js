@@ -11,8 +11,14 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      longStay: {
+      checkIn: {
         type: Sequelize.DATE
+      },
+      checkOut: {
+        type: Sequelize.DATE
+      },
+      longStay: {
+        type: Sequelize.INTEGER
       },
       homeId: {
         type: Sequelize.INTEGER

@@ -2,12 +2,16 @@ class AuthUC {
     constructor(
       AuthRepository,
       UserRepository,
-      bcrypt
+      bcrypt,
+      generateAccessToken,
+      _
      
     ) {
       this.AuthRepository = AuthRepository;
       this.UserRepository = UserRepository;
       this.bcrypt = bcrypt
+      this.generateToken = generateAccessToken
+      this._ = _
     }
   
     async register(userData) {
