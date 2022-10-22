@@ -12,29 +12,40 @@ class EmailRepository {
     });
   }
 
-  async sendOrderEmail(email, data) {
-    let content = email_message.ORDERCOMPLETED;
+  async sendNotificationRegisterForUser(email, data) {
+    let content = email_message.NOTIF_REGISTRATION;
     let text = content.text_value
-      .replaceAll("{customerName}", data.customerName)
+      .replaceAll("{firstName}", data.firstName)
+      .replaceAll("{lastName}", data.lastName)
       .replaceAll("{username}", data.username)
-      .replaceAll("{productName}", data.productName)
-      .replaceAll("{productPrice}", data.productPrice)
-      .replaceAll("{qty}", data.qty)
-      .replaceAll("{total_price}", data.total_price)
-      .replaceAll("{address}", data.address)
-      .replaceAll("{completed_date}", data.completed_date);
 
     let html = content.html_value
-      .replaceAll("{customerName}", data.customerName)
-      .replaceAll("{username}", data.username)
-      .replaceAll("{productName}", data.productName)
-      .replaceAll("{productPrice}", data.productPrice)
-      .replaceAll("{qty}", data.qty)
-      .replaceAll("{total_price}", data.total_price)
-      .replaceAll("{address}", data.address)
-      .replaceAll("{completed_date}", data.completed_date);
+    .replaceAll("{firstName}", data.firstName)
+    .replaceAll("{lastName}", data.lastName)
+    .replaceAll("{username}", data.username)
 
-    await this.sendEmail("order", email, text, html);
+    await this.sendEmail("Registration", email, text, html);
+  }
+  async sendNotificationRegisterForAdmin(email, data) {
+    let content = email_message.VERIFY_REGISTRATION;
+    let text = content.text_value
+    .replaceAll("{firstName}", data.firstName)
+    .replaceAll("{lastName}", data.lastName)
+    .replaceAll("{username}", data.username)
+
+    let html = content.html_value
+    .replaceAll("{firstName}", data.firstName)
+    .replaceAll("{lastName}", data.lastName)
+    .replaceAll("{username}", data.username) 
+    .replaceAll("{headOfFamily}", data.headOfFamily)
+    .replaceAll("{isMale}", data.isMale)
+    .replaceAll("{isMarried}", data.isMarried)
+    .replaceAll("{phone}", data.phone)
+    .replaceAll("{homeId}", data.homeId)
+    .replaceAll("{job}", data.job)
+
+
+    await this.sendEmail("Registration Verify", email, text, html);
   }
 }
 module.exports = EmailRepository;

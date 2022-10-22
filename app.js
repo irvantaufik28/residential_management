@@ -9,7 +9,7 @@ const generateAccessToken = require("./helper/jwt")
 const serverError = require("./middleware/serverError")
 const _ = require("lodash")
 const func = require('./libs/function')
-const email_message = require('./internal/constant')
+const email_message = require("./internal/constant/email_message")
 
 
 // import repository
@@ -21,7 +21,7 @@ const EmailRepository = require('./repository/email')
 // import Usecase
 const AuthUseCase = require('./usecase/auth')
 const UserUseCase = require('./usecase/user')
-const OtpUsecase = require('./usecase/otp')
+const OtpUseCase = require('./usecase/otp')
 
 
 // intit router
@@ -31,6 +31,7 @@ const authRouter = require("./routes/auth");
 const authUC = new AuthUseCase(
   new AuthRepository(),
   new UserRepository(),
+  new EmailRepository(),
   bcrypt,
   generateAccessToken,
   _

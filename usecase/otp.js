@@ -4,7 +4,7 @@ class Otp {
       this.emailRepository = emailRepository;
       this.email_message = email_message;
     }
-    async generateOTP(email, otp_type) {
+    async generateOTP(email, email_type) {
       let result = {
         isSuccess: false,
         status: 400,
@@ -16,12 +16,12 @@ class Otp {
         result.reason = "wait until : " + otp.expired_at;
         return result;
       }
-      let content = this.email_message[otp_type.toUpperCase()];
+      let content = this.email_message[email_type.toUpperCase()];
       if (typeof content === undefined) {
         return;
       }
   
-      otp = await this.otpRepository.generateOTP(email, otp_type);
+      otp = await this.otpRepository.generateOTP(email, email_type);
       let text = content.text_value.replace("{otp}", otp.otp_code);
       let html = content.html_value.replace("{otp}", otp.otp_code);
       await this.emailRepository.sendEmail("OTP Code", email, text, html);
@@ -30,7 +30,7 @@ class Otp {
       (result.status = 200), (result.reason = "check your email");
       return result;
     }
-    async verifyOTP(email, otp_code, otp_type) {
+    async verifyOTP(email, otp_code, email_type) {
       let result = {
         is_success: false,
         status: 400,
@@ -38,7 +38,7 @@ class Otp {
         data: null,
       };
   
-      let otp = await this.otpRepository.getOTP(email, otp_code, otp_type);
+      let otp = await this.otpRepository.getOTP(email, otp_code, email_type);
       if (otp === null) {
         result.reason = "invalid otp";
         return result;

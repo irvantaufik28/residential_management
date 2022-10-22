@@ -1,7 +1,11 @@
 const email_message = {
-  REGISTRATION: {
-    text_value: "your otp code for registration: {otp}",
-    html_value: "<b>your otp code for registration: {otp} </b>",
+  VERIFY_REGISTRATION: {
+    text_value: "menunggu vertifikasi user baru: {username}",
+    html_value: "<b>menunggu vertifikasi user baru: {username} </b>",
+  },
+  NOTIF_REGISTRATION: {
+    text_value: "vertifikasi user baru: {username}",
+    html_value: "<b>vertifikasi user baru: {username} </b>",
   },
   UPDATEEMAIL: {
     text_value: "your otp code for update email: {otp}",

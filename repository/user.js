@@ -12,7 +12,12 @@ class UserRepository {
           },
         });
       }
-      
+      async getAllUser() {
+        return await this.UserModel.findAll({
+          attributes: {exclude: ['password']}
+         }
+        );
+      }
     async getUserByID(id) {
         return await this.UserModel.findOne({
           where: { id }, 

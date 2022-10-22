@@ -30,6 +30,7 @@ module.exports = {
         isMarried : req.body.isMarried,
         email: req.body.email,
         password: req.body.password,
+        confirmPassword: req.body.confirmPassword,
         phone: req.body.phone,
         homeId : req.body.homeId,
         job : req.body.job,
@@ -40,10 +41,7 @@ module.exports = {
         return res.status(resUser.status).json(resData.failed(resUser.reason));
       }
       res.status(200).json(
-        resData.success({
-          user: resUser.data,
-          token: resUser.token,
-        })
+        resData.success(resUser.data)
       );
     } catch (e) {
       next(e);
