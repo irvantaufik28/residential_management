@@ -15,6 +15,9 @@ module.exports = {
         type: Sequelize.DATE
       },
       mandatory_payment: {
+        type: Sequelize.BOOLEAN
+      },
+      cost: {
         type: Sequelize.INTEGER
       },
       createdAt: {

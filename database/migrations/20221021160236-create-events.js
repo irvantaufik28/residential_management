@@ -11,7 +11,7 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      event_data: {
+      event_date: {
         type: Sequelize.DATE
       },
       userId: {

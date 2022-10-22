@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Home.init({
     home_number: DataTypes.STRING,
-    bills_id: DataTypes.INTEGER
+    bills_id: DataTypes.INTEGER,
+    isActive : DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Home',

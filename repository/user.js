@@ -12,17 +12,27 @@ class UserRepository {
           },
         });
       }
-      
+      async getAllUser() {
+        return await this.UserModel.findAll({
+          attributes: {exclude: ['password']}
+         }
+        );
+      }
     async getUserByID(id) {
         return await this.UserModel.findOne({
           where: { id }, 
-          attributes: {exclude: ['password', 'is_admin']}
+          attributes: {exclude: ['password']}
          
         });
       }
       async getUserByEmail(email) {
         return await this.UserModel.findOne({
           where: {email},
+        });
+      }
+      async getUserByUsername(username) {
+        return await this.UserModel.findOne({
+          where: {username},
         });
       }
       async updateUser(user, id) {

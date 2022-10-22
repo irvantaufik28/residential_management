@@ -8,25 +8,31 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      username: {
+        type: Sequelize.STRING
+      },
       firstName: {
         type: Sequelize.STRING
       },
       lastName: {
         type: Sequelize.STRING
       },
-      leader: {
+      headOfFamily: {
         type: Sequelize.BOOLEAN
       },
       birth: {
-        type: Sequelize.STRING
+        type: Sequelize.DATE
       },
       isMale: {
         type: Sequelize.BOOLEAN
       },
-      married: {
+      isMarried: {
         type: Sequelize.BOOLEAN
       },
       email: {
+        type: Sequelize.STRING
+      },
+      password: {
         type: Sequelize.STRING
       },
       phone: {
@@ -40,9 +46,6 @@ module.exports = {
       },
       roleId: {
         type: Sequelize.INTEGER
-      },
-      isAdmin: {
-        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
