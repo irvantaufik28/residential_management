@@ -1,4 +1,4 @@
-class UserUC {
+class User {
     constructor(UserRepository, OtpRepository, bcrypt, cloudinary) {
       this.UserRepository = UserRepository;
       this.OtpRepository = OtpRepository;
@@ -144,4 +144,4 @@ class UserUC {
   }
   
 
-module.exports = UserUC;
+module.exports = User

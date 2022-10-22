@@ -20,6 +20,9 @@ module.exports = {
       cost: {
         type: Sequelize.INTEGER
       },
+      homeId: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

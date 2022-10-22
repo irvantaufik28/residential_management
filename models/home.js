@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Home.init({
     home_number: DataTypes.STRING,
-    bills_id: DataTypes.INTEGER,
-    isActive : DataTypes.BOOLEAN
+    isActive : DataTypes.BOOLEAN,
+    isTenant: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Home',

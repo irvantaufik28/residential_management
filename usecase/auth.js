@@ -1,4 +1,4 @@
-class AuthUC {
+class Auth {
   constructor(
     AuthRepository,
     UserRepository,
@@ -109,4 +109,4 @@ class AuthUC {
     return result;
   }
 }
-module.exports = AuthUC;
+module.exports = Auth;

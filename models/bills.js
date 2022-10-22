@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     due_date_payment: DataTypes.DATE,
     mandatory_payment: DataTypes.BOOLEAN,
-    cost: DataTypes.INTEGER
+    cost: DataTypes.INTEGER,
+    homeId : DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Bills',

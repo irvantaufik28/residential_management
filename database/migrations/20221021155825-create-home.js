@@ -11,10 +11,10 @@ module.exports = {
       home_number: {
         type: Sequelize.STRING
       },
-      bills_id: {
-        type: Sequelize.INTEGER
-      },
       isActive: {
+        type: Sequelize.BOOLEAN
+      },
+      isTenant: {
         type: Sequelize.BOOLEAN
       },
       createdAt: {
