@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     home_number: DataTypes.STRING,
     isActive : DataTypes.BOOLEAN,
     isTenant: DataTypes.BOOLEAN,
+    isAtHome : DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Home',

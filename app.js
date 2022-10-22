@@ -17,15 +17,20 @@ const UserRepository = require('./repository/user')
 const AuthRepository = require('./repository/auth')
 const OtpRepository = require('./repository/otp')
 const EmailRepository = require('./repository/email')
+const HomeRepository = require('./repository/home')
 
 // import Usecase
 const AuthUseCase = require('./usecase/auth')
 const UserUseCase = require('./usecase/user')
 const OtpUseCase = require('./usecase/otp')
+const HomeUseCase = require('./usecase/home')
 
 
 // intit router
 const authRouter = require("./routes/auth");
+const adminRouter = require("./routes/admin");
+const memberRouter = require("./routes/member");
+const publicRouter = require("./routes/public");
 
 // init
 const authUC = new AuthUseCase(
@@ -49,10 +54,16 @@ const otpUC = new OtpUseCase(
   email_message
 );
 
+const homeUC = new HomeUseCase(
+  new HomeRepository(),
+  new UserRepository()
+)
+
 app.use((req, res, next) => {
   req.authUC = authUC;
   req.otpUC = otpUC;
   req.userUC = userUC;
+  req.homeUC = homeUC;
   next();
 });
 
@@ -64,7 +75,10 @@ app.get('/', (req, res) => {
   res.send('Hello Web Pengelolahan Perum');
 });
 
-app.use("/", authRouter);
+app.use("/api", authRouter);
+app.use("/api", adminRouter);
+app.use("/api", memberRouter);
+app.use("/api", publicRouter);
 
 
 app.use(serverError);

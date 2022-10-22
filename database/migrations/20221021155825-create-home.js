@@ -17,6 +17,9 @@ module.exports = {
       isTenant: {
         type: Sequelize.BOOLEAN
       },
+      isAtHome: {
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
