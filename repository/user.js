@@ -23,6 +23,11 @@ class UserRepository {
       attributes: { exclude: ["password"] },
     });
   }
+  async getPrivate(id) {
+    return await this.UserModel.findOne({
+      where: { id }
+    });
+  }
   async getUserByEmail(email) {
     return await this.UserModel.findOne({
       where: { email },

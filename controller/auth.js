@@ -32,7 +32,7 @@ module.exports = {
         password: req.body.password,
         confirmPassword: req.body.confirmPassword,
         phone: req.body.phone,
-        homeId : null,
+        homeId : undefined,
         job : req.body.job,
         roleId: 2,
         isRegistered: false
