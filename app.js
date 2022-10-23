@@ -18,12 +18,14 @@ const AuthRepository = require('./repository/auth')
 const OtpRepository = require('./repository/otp')
 const EmailRepository = require('./repository/email')
 const HomeRepository = require('./repository/home')
+const IdentityCardRepository = require('./repository/indentityCard')
 
 // import Usecase
 const AuthUseCase = require('./usecase/auth')
 const UserUseCase = require('./usecase/user')
 const OtpUseCase = require('./usecase/otp')
 const HomeUseCase = require('./usecase/home')
+const IdentityCardUseCase = require('./usecase/identityCard')
 
 
 // intit router
@@ -61,11 +63,17 @@ const homeUC = new HomeUseCase(
   _
 )
 
+const identityCardUC = new IdentityCardUseCase(
+  new IdentityCardRepository(),
+  new UserRepository()
+)
+
 app.use((req, res, next) => {
   req.authUC = authUC;
   req.otpUC = otpUC;
   req.userUC = userUC;
   req.homeUC = homeUC;
+  req.identityCardUC = identityCardUC;
   next();
 });
 

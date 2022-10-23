@@ -17,7 +17,7 @@ class User {
         data: null,
       };
   
-      const user = await this.UserRepository.getUserData(id);
+      const user = await this.UserRepository.getUserById(id);
   
       if (user === null) {
         result.reason = "user not found";

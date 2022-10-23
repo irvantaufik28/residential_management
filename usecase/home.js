@@ -55,10 +55,17 @@ class Home {
       reason: null,
       data: [],
     };
-    const home = await this.HomeRepository.getHomeByUserId(userId);
-    if (home === null) {
-      result.reason = "home not found";
+    const user = await this.UserRepository.getUserById(userId);
+    if (user === null) {
+      result.reason = "user not found";
+      return
     }
+    const home = await this.HomeRepository.getHomeById(user.id)
+    if (home === null) {
+      result.reason = "user not found";
+      return
+    }
+
     result.isSuccess = true;
     result.status = 200;
     result.data = home;
