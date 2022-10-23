@@ -105,7 +105,7 @@ module.exports = {
         let id = req.user.id;
         let userData = {
             email: req.body.email,
-            otp_: req.body.otp_,
+            otp_code: req.body.otp_code,
         };
         try {
             let resUpdate = await req.userUC.updateEmail(userData, id);

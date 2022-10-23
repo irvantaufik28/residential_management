@@ -11,4 +11,5 @@ router.put("/member/home/update/",home.updateHomeByMember)
 router.get("/member/profile/",authorized.public, user.getProfile)
 router.put("/member/update/password/",authorized.public, user.updatePassword)
 router.put("/member/reset/password/",authorized.public, user.resetPassword)
+router.put("/member/update/email/",authorized.public, user.updateEmail)
 module.exports = router;

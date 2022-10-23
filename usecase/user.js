@@ -91,16 +91,16 @@ class User {
     async updateEmail (userData , id ){
       let result = {
         isSuccess : false,
-        reason : '',
+        reason : null,
         status : 400,
       }
-      let user = await this.UserRepository.getUserData(id)
+      let user = await this.UserRepository.getUserById(id)
       if(user === null){
         result.reason = "user not found"
         result.status = 404
         return result
       }
-      let otp = await this.OtpRepository.getOTP(userData.email , userData.otp_,"UPDATEEMAIL" )
+      let otp = await this.OtpRepository.getOTP(user.email , userData.otp_code,"UPDATEEMAIL" )
       if(otp === null){
         result.reason = "invalid otp "
         return result
