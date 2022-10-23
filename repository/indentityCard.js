@@ -1,4 +1,5 @@
 const { IdentityCard } = require("../models");
+const Op = require('sequelize').Op
 
 class IdentityCardRepository {
   constructor() {
@@ -9,16 +10,20 @@ class IdentityCardRepository {
       where: { id },
     });
   }
-  async getIdentityCardByUserId(userId) {
+  async getIdentityCardByUserId(id) {
     return await this.IdentityCardModel.findAll({
-      where: { userId },
+      where: { userId : id},
     });
   }
   
   async getIdentityCardByCardType(card_type) {
     return await this.IdentityCardModel.findAll({
-      where: { card_type },
-    });
+      where : {
+        card_type: {
+          [Op.eq]: card_type
+        }
+      }
+    })
   }
   async createIdentityCard(IdentityCardData) {
     return await this.IdentityCardModel.create(IdentityCardData);

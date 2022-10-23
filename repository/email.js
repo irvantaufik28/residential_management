@@ -44,8 +44,21 @@ class EmailRepository {
     .replaceAll("{homeId}", data.homeId)
     .replaceAll("{job}", data.job)
 
-
     await this.sendEmail("Registration Verify", email, text, html);
+  }
+  async sendNotificationApprovedRegister(email, data) {
+    let content = email_message.NOTIF_APPROVED_REGISTER;
+    let text = content.text_value
+      .replaceAll("{firstName}", data.firstName)
+      .replaceAll("{lastName}", data.lastName)
+      .replaceAll("{username}", data.username)
+
+    let html = content.html_value
+    .replaceAll("{firstName}", data.firstName)
+    .replaceAll("{lastName}", data.lastName)
+    .replaceAll("{username}", data.username)
+
+    await this.sendEmail("Registration", email, text, html);
   }
 }
 module.exports = EmailRepository;

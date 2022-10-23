@@ -17,15 +17,17 @@ class Home {
       result.reason = "home not found";
       return result;
     }
-    const users = await this.UserRepository.getUserByHomeId(home.id);
+    const users = await this.UserRepository.getUserByHomeId(home.id);   
     let homes = {
       id: home.id,
       home_number: home.home_number,
-      bills_id: home.bills_id,
       isActive: home.isActive,
+      isTenant: home.isTenant,
+      isAtHome: home.isAtHome,
+      total_family_members : users.length,
       createdAt: home.createdAt,
       updatedAt: home.updatedAt,
-      users: users,
+      users
     };
     result.isSuccess = true;
     result.status = 200;

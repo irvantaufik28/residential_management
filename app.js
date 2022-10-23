@@ -47,6 +47,8 @@ const authUC = new AuthUseCase(
 const userUC = new UserUseCase(
   new UserRepository(),
   new OtpRepository(),
+  new EmailRepository(),
+  new HomeRepository(),
   bcrypt,
 );
 

@@ -3,7 +3,7 @@ module.exports = {
   getIdentityCardById: async (req, res, next) => {
     try {
       let { id } = req.params
-      const identityCard = await req.IdentityCardUC.getIdentityCardById(id);
+      const identityCard = await req.identityCardUC.getIdentityCardId(id);
       if (!identityCard.isSuccess) {
         return res
           .status(identityCard.status)
@@ -18,7 +18,7 @@ module.exports = {
   getIdentityCardByUserId: async (req, res, next) => {
     try {
       let { id } = req.params;
-      const identityCard = await req.IdentityCardUC.getIdentityCardByUserId(id);
+      const identityCard = await req.identityCardUC.getIdentityCardByUserId(id);
       if (!identityCard.isSuccess) {
         return res
           .status(identityCard.status)

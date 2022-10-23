@@ -38,9 +38,15 @@ class UserRepository {
       where: { username },
     });
   }
-  async getUserByHomeId(homeId) {
-    return await this.UserModel.findOne({
-      where: { homeId },
+  async getUserByHomeId(id) {
+    return await this.UserModel.findAll({
+      where: { homeId : id },
+      attributes: { exclude: ["password"] }
+    });
+  }
+  async getUserUnregisteredUser() {
+    return await this.UserModel.findAll({
+      where: { isRegistered : false },
       attributes: { exclude: ["password"] },
     });
   }
@@ -49,5 +55,6 @@ class UserRepository {
       where: { id },
     });
   }
+
 }
 module.exports = UserRepository;

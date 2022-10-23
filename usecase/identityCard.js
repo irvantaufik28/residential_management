@@ -45,9 +45,7 @@ class indentityCard {
 
 
     const indentityCard = await this.IdentityCardRepository.getIdentityCardByUserId(userId);
-    if (indentityCard === null) {
-      result.reason = "indentityCard not found";
-    }
+    
     result.isSuccess = true;
     result.status = 200;
     result.data = indentityCard;
