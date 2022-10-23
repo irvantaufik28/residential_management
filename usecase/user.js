@@ -10,7 +10,7 @@ class User {
       return await this.UserRepository.getUserExist(username, email);
     }
   
-    async getUserByID(id) {
+    async getProfile(id) {
       let result = {
         isSuccess: false,
         reason: null,
@@ -18,7 +18,7 @@ class User {
         data: null,
       };
   
-      const user = await this.UserRepository.getUserByID(id);
+      const user = await this.UserRepository.getUserById(id);
   
       if (user === null) {
         result.reason = "user not found";

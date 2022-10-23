@@ -23,8 +23,8 @@ class Home {
       home_number: home.home_number,
       bills_id: home.bills_id,
       isActive: home.isActive,
-      createdAt: Home.createdAt,
-      updatedAt: Home.updatedAt,
+      createdAt: home.createdAt,
+      updatedAt: home.updatedAt,
       users: users,
     };
     result.isSuccess = true;

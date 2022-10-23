@@ -16,7 +16,8 @@ module.exports = {
                 phone: 082311552,
                 homeId : 1,
                 job : "programmer",
-                roleId: 2,
+                roleId: 1,
+                isRegistered : true,
                 createdAt: new Date(),
                 updatedAt: new Date()
             }

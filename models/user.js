@@ -29,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     job: DataTypes.STRING,
     homeId: DataTypes.INTEGER,
     roleId: DataTypes.INTEGER,
+    isRegistered : DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'User',

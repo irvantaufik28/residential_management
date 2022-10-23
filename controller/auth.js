@@ -32,9 +32,10 @@ module.exports = {
         password: req.body.password,
         confirmPassword: req.body.confirmPassword,
         phone: req.body.phone,
-        homeId : req.body.homeId,
+        homeId : null,
         job : req.body.job,
-        roleId: 1,
+        roleId: 2,
+        isRegistered: false
       };
       let resUser = await req.authUC.register(userData);
       if (resUser.isSuccess !== true) {

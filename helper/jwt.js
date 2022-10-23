@@ -7,7 +7,8 @@ function generateAccessToken(data) {
     username : data.username,
     email :data.email,
     phone : data.phone,
-    roleId : data.roleId
+    roleId : data.roleId,
+    isRegistered :data.isRegistered
    }
   
     const token = jwt.sign(
