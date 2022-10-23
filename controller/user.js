@@ -83,25 +83,24 @@ module.exports = {
     },
 
     resetPassword: async (req, res, next) => {
-
         let email = req.query.email;
         let user = {
-            newPassword: req.body.newPassword,
-            confirmNewPassword: req.body.confirmNewPassword,
-            otp_: req.body.otp_,
+          newPassword: req.body.newPassword,
+          confirmNewPassword: req.body.confirmNewPassword,
+          otp_code: req.body.otp_code,
         };
         try {
-            resReset = await req.userUC.resetPassword(user, email);
-            if (resReset.isSuccess !== true) {
-                return res
-                    .status(resReset.status)
-                    .json(resData.failed(resReset.reason));
-            }
-            res.status(resReset.status).json(resData.success());
+          resReset = await req.userUC.resetPassword(user, email);
+          if (resReset.isSuccess !== true) {
+            return res
+              .status(resReset.status)
+              .json(resData.failed(resReset.reason));
+          }
+          res.status(resReset.status).json(resData.success());
         } catch (e) {
-            next(e);
+          next(e);
         }
-    },
+      },
     updateEmail: async (req, res, next) => {
         let id = req.user.id;
         let userData = {

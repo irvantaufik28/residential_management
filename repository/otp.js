@@ -15,11 +15,11 @@ class OtpRepository {
         });
     }
 
-    async generateOTP(email, email_type) {
+    async generateOTP(email, otp_type) {
         await this.deleteAllOtp(email)
         let otp_obj = {
             email: email,
-            email_type: email_type,
+            otp_type: otp_type,
             otp_code: func.generateRandomNumber(6)
         }
         let minutesToAdd = 2
@@ -32,7 +32,7 @@ class OtpRepository {
     }
 
 
-    async getOTP(email, otp_code, email_type) {
+    async getOTP(email, otp_code, otp_type) {
         let otp = null
         otp = await this.OtpModel.findOne({
             where: {
@@ -42,8 +42,8 @@ class OtpRepository {
                 otp_code: {
                     [Op.eq]: otp_code
                 },
-                email_type: {
-                    [Op.eq]: email_type
+                otp_type: {
+                    [Op.eq]: otp_type
                 },
                 expired_at: {
                     [Op.gt]: new Date()

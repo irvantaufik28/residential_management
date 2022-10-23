@@ -31,6 +31,7 @@ const authRouter = require("./routes/auth");
 const adminRouter = require("./routes/admin");
 const memberRouter = require("./routes/member");
 const publicRouter = require("./routes/public");
+const otpRouter = require("./routes/otp");
 
 // init
 const authUC = new AuthUseCase(
@@ -80,6 +81,7 @@ app.use("/api", authRouter);
 app.use("/api", adminRouter);
 app.use("/api", memberRouter);
 app.use("/api", publicRouter);
+app.use("/api", otpRouter);
 
 
 app.use(serverError);

@@ -11,7 +11,7 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
-      email_type: {
+      otp_type: {
         type: Sequelize.STRING
       },
       otp_code: {
