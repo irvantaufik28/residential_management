@@ -33,7 +33,7 @@ module.exports = {
   getIdentityCardByCardType: async (req, res, next) => {
     try {
       let { card_type } = req.query;
-      const identityCard = await req.IdentityCardUC.getIdentityCardByCardType(card_type);
+      const identityCard = await req.identityCardUC.getIdentityCardByCardType(card_type);
       if (!identityCard.isSuccess) {
         return res
           .status(identityCard.status)
@@ -47,8 +47,13 @@ module.exports = {
 
   createIdentityCard: async (req, res, next) => {
     try {
-      let identityCardData = req.body
-      const identityCard = await req.IdentityCardUC.createIdentityCard(identityCardData);
+      let data = {
+        card_type : req.body.card_type,
+        serialNo: req.body.serialNo,
+        userId : req.body.userId
+      }
+      let identityCard = await req.identityCardUC.createCard(data);
+      
       if (!identityCard.isSuccess) {
         return res
           .status(identityCard.status)
@@ -63,7 +68,9 @@ module.exports = {
   updateIdentityCard: async (req, res, next) => {
     try {
       let { id } = req.params;
-      let identityCard = req.body
+      let identityCard = {
+        serialNo : req.body.serialNo
+      }
       let newIdentityCard = await req.identityCardUC.updateIdentityCard(identityCard, id);
       if (!newIdentityCard.isSuccess) {
         return res.status(newIdentityCard.status).json(resData.failed(newIdentityCard.reason));

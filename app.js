@@ -10,6 +10,7 @@ const serverError = require("./middleware/serverError")
 const _ = require("lodash")
 const func = require('./libs/function')
 const email_message = require("./internal/constant/email_message")
+const card_type = require("./internal/constant/cardType")
 
 
 // import repository
@@ -67,7 +68,9 @@ const homeUC = new HomeUseCase(
 
 const identityCardUC = new IdentityCardUseCase(
   new IdentityCardRepository(),
-  new UserRepository()
+  new UserRepository(),
+  card_type,
+  _
 )
 
 app.use((req, res, next) => {

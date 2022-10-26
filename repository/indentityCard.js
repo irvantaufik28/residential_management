@@ -15,6 +15,13 @@ class IdentityCardRepository {
       where: { userId : id},
     });
   }
+
+  async getIdentityCardBySerialNo(serialNo) {
+    return await this.IdentityCardModel.findOne({
+      where: { serialNo },
+    });
+  }
+  
   
   async getIdentityCardByCardType(card_type) {
     return await this.IdentityCardModel.findAll({
@@ -25,7 +32,7 @@ class IdentityCardRepository {
       }
     })
   }
-  async createIdentityCard(IdentityCardData) {
+  async createCard(IdentityCardData) {
     return await this.IdentityCardModel.create(IdentityCardData);
   }
   async updateIdentityCard(data, id) {
