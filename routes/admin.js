@@ -24,4 +24,5 @@ router.get("/admin/identity/user/:id", identityCard.getIdentityCardByUserId)
 router.get("/admin/identity/user/cardtype", identityCard.getIdentityCardByCardType)
 router.post("/admin/identity/create", identityCard.createIdentityCard)
 router.put("/admin/identity/update/:id", identityCard.updateIdentityCard)
+router.delete("/admin/identity/delete/:id", identityCard.deleteIdentityCard)
 module.exports = router;
