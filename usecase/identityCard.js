@@ -153,10 +153,11 @@ class indentityCard {
       result.reason = "indentityCard not found";
       return result;
     }
-    const setUserToUnrigestered = {
-      isRegistered: false,
-    };
-    await this.UserRepository.updateUser(indentityCard.userId, setUserToUnrigestered);
+    const setToUnRegistered = {
+      isRegistered : false,
+    }
+    
+    await this.UserRepository.updateUser(setToUnRegistered, indentityCard.userId)
     await this.IdentityCardRepository.deleteIdentityCard(id);
     result.isSuccess = true;
     result.status = 204;
